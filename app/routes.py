@@ -1,7 +1,28 @@
+from flask import render_template
+
 from app import app
 
-@app.route('/')
-@app.route('/index')
 
+user = {"username": "Roman Reigns"}
+
+posts: list[dict[str, str | dict[str, str]]] = [
+    {
+        "author": {"username": "John Cena"},
+        "body": "Beautiful day in Portland!",
+    },
+    {
+        "author": {"username": "Brock Lesnar"},
+        "body": "The Avengers movie was so cool!",
+    },
+]
+
+
+@app.route("/")
+@app.route("/index")
 def index():
-    return "Hello Rana Universe"
+    return render_template(
+        "index.html",
+        title="Home",
+        user=user,
+        posts=posts,
+    )
