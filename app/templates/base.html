@@ -24,8 +24,21 @@
         <a href="/index">Home Page</a>
         <a href="/login">Login Page</a>
     </div>
-    
+
     <hr>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for msg in messages %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    {% endif %}
+    {% endwith %}
+
+
     {% block content %}
 
     {% endblock content %}
